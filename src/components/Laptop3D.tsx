@@ -5,7 +5,7 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Group, Mesh, MeshStandardMaterial } from 'three';
-import * as THREE from 'three';
+
 
 /* ============================================================
    1) RESPONSIVE HOOK
