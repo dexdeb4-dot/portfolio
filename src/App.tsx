@@ -18,6 +18,7 @@ import {
 import SplashCursor from './components/SplashCursor';
 import Aurora from './components/Aurora';
 import { Laptop3D } from './components/Laptop3D';
+import MagnetLines from './components/MagnetLines';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -658,8 +659,20 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="relative py-32 bg-gray-50 dark:bg-gray-900/50">
+    <section id="skills" ref={sectionRef} className="relative py-32 bg-gray-50 dark:bg-gray-900/50 overflow-hidden">
       <BlueprintGrid />
+      {/* Animated magnetic lines background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40 dark:opacity-30 z-0">
+        <MagnetLines
+          rows={10}
+          columns={12}
+          containerSize="90vmin"
+          lineColor="#fbbf24"
+          lineWidth="2px"
+          lineHeight="30px"
+          baseAngle={-10}
+        />
+      </div>
       <div className="absolute top-20 right-20 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Wrench} delay={0} /></div>
       <div className="absolute bottom-40 left-10 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Settings} delay={0.5} /></div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -961,7 +974,7 @@ const Footer = () => {
             <span className="text-gray-400">|</span>
             <span className="text-gray-400 text-sm">Debmalya Bhattacharyya</span>
           </div>
-          <p className="text-gray-500 text-sm flex items-center gap-2"><Code2 size={14} />2026 Student Portfolio</p>
+          <p className="text-gray-500 text-sm flex items-center gap-2"><Code2 size={14} />2025 Student Portfolio</p>
           <div className="flex gap-4">
             <a href="https://github.com/Debmalya2107" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors"><Github size={20} /></a>
             <a href="https://linkedin.com/in/debmalya-bhattacharyya" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors"><Linkedin size={20} /></a>
