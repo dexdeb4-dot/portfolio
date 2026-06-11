@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, CSSProperties } from 'react';
+import React, { useRef, useEffect } from 'react';
+import type { CSSProperties } from 'react';
 
 interface MagnetLinesProps {
   rows?: number;
@@ -32,7 +33,7 @@ const MagnetLines: React.FC<MagnetLinesProps> = ({
     const items = container.querySelectorAll<HTMLSpanElement>('span');
 
     const onPointerMove = (pointer: { x: number; y: number }) => {
-      items.forEach(item => {
+      items.forEach((item) => {
         const rect = item.getBoundingClientRect();
         const centerX = rect.x + rect.width / 2;
         const centerY = rect.y + rect.height / 2;
@@ -72,11 +73,10 @@ const MagnetLines: React.FC<MagnetLinesProps> = ({
         backgroundColor: lineColor,
         width: lineWidth,
         height: lineHeight,
-        //@ts-ignore
         '--rotate': `${baseAngle}deg`,
         transform: 'rotate(var(--rotate))',
         willChange: 'transform'
-      }}
+      } as CSSProperties}
     />
   ));
 
