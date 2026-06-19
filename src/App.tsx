@@ -1008,6 +1008,10 @@ function App() {
     else document.documentElement.classList.remove('dark');
   };
 
+  if (window.location.pathname === '/admin') {
+    return <AdminDashboard />;
+  }
+
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <Aurora
