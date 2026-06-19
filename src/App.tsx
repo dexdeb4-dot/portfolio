@@ -975,7 +975,7 @@ const Footer = () => {
             <span className="text-gray-400">|</span>
             <span className="text-gray-400 text-sm">Debmalya Bhattacharyya</span>
           </div>
-          <p className="text-gray-500 text-sm flex items-center gap-2"><Code2 size={14} />2025 Student Portfolio</p>
+          <p className="text-gray-500 text-sm flex items-center gap-2"><Code2 size={14} />2027 Passout Batch Student Portfolio</p>
           <div className="flex gap-4">
             <a href="https://github.com/Debmalya2107" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors"><Github size={20} /></a>
             <a href="https://linkedin.com/in/debmalya-bhattacharyya" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors"><Linkedin size={20} /></a>
