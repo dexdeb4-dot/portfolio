@@ -19,7 +19,7 @@ import SplashCursor from './components/SplashCursor';
 import Aurora from './components/Aurora';
 import { Laptop3D } from './components/Laptop3D';
 import MagnetLines from './components/MagnetLines';
-
+import AdminDashboard from './AdminDashboard';
 gsap.registerPlugin(ScrollTrigger);
 
 // ============================================
