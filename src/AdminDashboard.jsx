@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Pusher from 'pusher-js';
 
 export default function TrafficDashboard() {
- const [logs, setLogs] = useState<any[]>([]);
+const [logs, setLogs] = useState([]);
 
   useEffect(() => {
     // Initialize the real-time websocket subscription channel
