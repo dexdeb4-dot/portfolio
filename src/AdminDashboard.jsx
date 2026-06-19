@@ -1,15 +1,7 @@
-Here is the fully updated `AdminDashboard.jsx` code. The logic remains exactly the same, but the styling has been completely rewritten to use your new light, warm color palette (`#FFFAF3`, `#FFF2DB`, `#FFE5BF`) with the vibrant red (`#F62440`) acting as the primary accent for buttons, headers, and highlights.
-
-I also updated the text colors to a dark gray to ensure everything is easy to read against the new light backgrounds.
-
-### Updated `src/AdminDashboard.jsx`
-
-```jsx
 import React, { useEffect, useState } from 'react';
 import Pusher from 'pusher-js';
 
 export default function AdminDashboard() {
-  // --- 1. AUTHENTICATION STATE ---
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +9,6 @@ export default function AdminDashboard() {
 
   const [logs, setLogs] = useState([]);
 
-  // --- 2. PUSHER CONNECTION ---
   useEffect(() => {
     if (!isAuthenticated) return;
 
@@ -37,7 +28,6 @@ export default function AdminDashboard() {
     };
   }, [isAuthenticated]);
 
-  // --- 3. LOGIN LOGIC ---
   const handleLogin = (e) => {
     e.preventDefault();
     
@@ -49,7 +39,6 @@ export default function AdminDashboard() {
     }
   };
 
-  // --- 4. LOGIN SCREEN FRONTEND ---
   if (!isAuthenticated) {
     return (
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFAF3', fontFamily: 'system-ui, sans-serif' }}>
@@ -83,11 +72,9 @@ export default function AdminDashboard() {
     );
   }
 
-  // --- 5. DASHBOARD FRONTEND ---
   return (
     <div style={{ padding: '30px', backgroundColor: '#FFFAF3', color: '#1f2937', minHeight: '100vh', fontFamily: 'system-ui, sans-serif' }}>
       
-      {/* HEADER SECTION */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '3px solid #FFE5BF', paddingBottom: '15px' }}>
         <h2 style={{ color: '#F62440', margin: 0, fontWeight: '800' }}>
           LIVE SITE TRAFFIC LOGS
@@ -100,7 +87,6 @@ export default function AdminDashboard() {
         </button>
       </div>
 
-      {/* TABLE SECTION */}
       <table width="100%" style={{ textAlign: 'left', marginTop: '20px', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ color: '#F62440', borderBottom: '2px solid #FFE5BF' }}>
@@ -132,5 +118,3 @@ export default function AdminDashboard() {
     </div>
   );
 }
-
-```
