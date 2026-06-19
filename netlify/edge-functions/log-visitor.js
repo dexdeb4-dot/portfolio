@@ -23,10 +23,10 @@ export default async (request, context) => {
     timestamp: new Date().toISOString()
   };
   const pusher = new Pusher({
-    appId: Deno.env.get("PUSHER_APP_ID"),
-    key: Deno.env.get("PUSHER_KEY"),
-    secret: Deno.env.get("PUSHER_SECRET"),
-    cluster: Deno.env.get("PUSHER_CLUSTER"),
+    appId: Deno.env.get("2168475"),
+    key: Deno.env.get("4f07c352b23abd7a6eab"),
+    secret: Deno.env.get("9face8f00b77aaa8eaa1"),
+    cluster: Deno.env.get("ap2"),
     useTLS: true
   });
 
