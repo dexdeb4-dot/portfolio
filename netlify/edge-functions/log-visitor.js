@@ -1,4 +1,4 @@
-import { Pusher } from "https://esm.sh/pusher@5.2.0";
+import Pusher from "https://esm.sh/pusher@5.2.0";
 
 export default async (request, context) => {
   const url = new URL(request.url);
