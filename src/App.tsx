@@ -24,6 +24,28 @@ import AdminDashboard from './AdminDashboard';
 gsap.registerPlugin(ScrollTrigger);
 
 // ============================================
+// SEO STRUCTURED DATA - Invisible to user, visible to Google
+// ============================================
+const SEOStructuredData = () => {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Debmalya Bhattacharyya",
+    "url": "https://debmalya.space/",
+    "jobTitle": "Full Stack & AI Developer",
+    "sameAs": ["https://github.com/Debmalya2107", "https://www.linkedin.com/in/debmalya-bhattacharyya/"]
+  };
+  
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+    </>
+  );
+};
+
+
+
+// ============================================
 // ENGINEERING 3D BACKGROUND COMPONENT
 // ============================================
 
@@ -288,7 +310,7 @@ const Navigation = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => 
   };
 
   return (
-    <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-lg py-3' : 'py-6'}`}>
+    <nav ref={navRef} aria-label="Main navigation" role="navigation" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-lg py-3' : 'py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="text-2xl font-bold font-display tracking-tight flex items-center gap-2">
           <AnimatedGear size={28} className="text-yellow-500" speed={4} />
@@ -303,16 +325,16 @@ const Navigation = ({ theme, toggleTheme }: { theme: string, toggleTheme: () => 
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" aria-label="Toggle Dark Mode">
+          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" aria-label="Toggle Dark Mode" title="Toggle theme">
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <button className="md:hidden text-gray-900 dark:text-gray-100" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button className="md:hidden text-gray-900 dark:text-gray-100" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu" aria-expanded={isMobileMenuOpen} aria-controls="mobile-menu">
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg mt-3 mx-6 rounded-xl p-6 shadow-xl border border-yellow-200 dark:border-yellow-800">
+        <div id="mobile-menu" className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg mt-3 mx-6 rounded-xl p-6 shadow-xl border border-yellow-200 dark:border-yellow-800">
           <div className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a key={link.name} href={link.href} onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }} className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors py-2 flex items-center gap-3">
@@ -368,7 +390,8 @@ const HeroSection = () => {
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span className="text-sm text-gray-700 dark:text-gray-300 font-medium flex items-center gap-2"><Radio size={14} className="text-yellow-500" />Available for opportunities</span>
             </div>
-            <h1 ref={headingRef} className="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6 flex flex-col gap-2">
+            <h1 ref={headingRef} aria-label="Debmalya Bhattacharyya - Full Stack Developer and AI Engineer" className="text-4xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-6 flex flex-col gap-2">
+            <span className="sr-only">Debmalya Bhattacharyya - Full Stack Developer & AI Engineer | React, Node.js, Python Expert from Kolkata, India</span>
   {/* Line 1: DEBMALYA */}
   <div className="block whitespace-nowrap">
     {"DEBMALYA".split('').map((char, i) => (
@@ -393,7 +416,7 @@ const HeroSection = () => {
               <button onClick={scrollToProjects} className="magnetic-btn px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg shadow-yellow-200 dark:shadow-yellow-900/30 group">
                 <Rocket size={18} className="group-hover:animate-bounce" />Explore My Work<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
-           <a href="mailto:debmalyabhattacharyya2@gmail.com" className="px-8 py-4 border-2 border-gray-200 dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-full font-semibold transition-all flex items-center gap-2"><Send size={18} />Get In Touch</a>
+           <a href="mailto:debmalyabhattacharyya2@gmail.com" aria-label="Contact Debmalya Bhattacharyya via email" className="px-8 py-4 border-2 border-gray-200 dark:border-gray-800 hover:border-yellow-400 dark:hover:border-yellow-500 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white rounded-full font-semibold transition-all flex items-center gap-2"><Send size={18} />Get In Touch</a>
             </div>
             <div className="flex gap-4 mt-8">
               <a href="https://linkedin.com/in/debmalya-bhattacharyya" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-gray-800 hover:bg-yellow-100 dark:hover:bg-gray-700 rounded-full flex items-center justify-center transition-all hover:scale-110 group"><Linkedin size={20} className="text-gray-700 dark:text-gray-300 group-hover:text-yellow-600" /></a>
@@ -454,7 +477,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-32 bg-gray-50 dark:bg-gray-900/50">
+    <section id="about" ref={sectionRef} aria-label="About Debmalya Bhattacharyya" className="relative py-32 bg-gray-50 dark:bg-gray-900/50">
       <BlueprintGrid />
       <div className="absolute top-20 right-20 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Wrench} delay={0} /></div>
       <div className="absolute bottom-40 left-10 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Hammer} delay={0.7} /></div>
@@ -480,7 +503,7 @@ const AboutSection = () => {
             </div>
           </div>
           <div ref={statsRef} className="w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-black dark:from-gray-950 dark:to-black shadow-2xl border border-gray-800 dark:border-gray-700 flex items-center justify-center">
-            <img src="/images/abt.png" alt="About" className="w-full h-full object-contain" />
+            <img src="/images/abt.png" alt="Debmalya Bhattacharyya - Full Stack Developer and AI Engineer at Techno International New Town Kolkata" className="w-full h-full object-contain" loading="lazy" decoding="async" width="600" height="600" />
           </div>
         </div>
       </div>
@@ -557,7 +580,7 @@ const ProjectsSection = () => {
   }, [filter]);
 
   return (
-    <section id="projects" ref={sectionRef} className="relative py-32">
+    <section id="projects" ref={sectionRef} aria-label="Projects by Debmalya Bhattacharyya" className="relative py-32">
       <BlueprintGrid />
       <div className="absolute top-40 left-10 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Folder} delay={0} /></div>
       <div className="absolute bottom-20 right-20 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={FileCode} delay={0.5} /></div>
@@ -584,9 +607,9 @@ const ProjectsSection = () => {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project: typeof projects[0], index) => (
-            <div key={index} className="project-card bg-white dark:bg-gray-800 group rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700">
+            <div key={index} itemScope itemType="https://schema.org/CreativeWork" className="project-card bg-white dark:bg-gray-800 group rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700">
               <div className="relative overflow-hidden h-48">
-                <img src={project.image} alt={project.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img src={project.image} alt={`${project.name} - ${project.description.substring(0,80)} | Built with ${project.language} by Debmalya Bhattacharyya`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" width="400" height="300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute top-4 left-4"><span className="px-3 py-1 bg-yellow-400 text-gray-900 rounded-full text-xs font-semibold flex items-center gap-1"><Code2 size={12} />{project.language}</span></div>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"><ScanningLine /></div>
@@ -606,9 +629,9 @@ const ProjectsSection = () => {
                   </div>
                   <div className="flex items-center gap-3">
                     {(project as any).liveUrl && (
-                      <a href={(project as any).liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-yellow-600 hover:text-yellow-700 font-medium text-sm transition-colors"><Globe size={14} />Live</a>
+                      <a href={(project as any).liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`View live demo of ${project.name}`} title={`Live demo - ${project.name}`} className="flex items-center gap-1 text-yellow-600 hover:text-yellow-700 font-medium text-sm transition-colors"><Globe size={14} />Live</a>
                     )}
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-yellow-600 hover:text-yellow-700 font-medium text-sm transition-colors"><ExternalLink size={14} />View</a>
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`View source code of ${project.name} on GitHub`} title={`Source code - ${project.name}`} className="flex items-center gap-1 text-yellow-600 hover:text-yellow-700 font-medium text-sm transition-colors"><ExternalLink size={14} />View</a>
                   </div>
                 </div>
               </div>
@@ -660,7 +683,7 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="relative py-32 bg-gray-50 dark:bg-gray-900/50 overflow-hidden">
+    <section id="skills" ref={sectionRef} aria-label="Skills and Expertise" className="relative py-32 bg-gray-50 dark:bg-gray-900/50 overflow-hidden">
       <BlueprintGrid />
       {/* Animated magnetic lines background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40 dark:opacity-30 z-0">
@@ -766,7 +789,7 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} className="relative py-32">
+    <section id="experience" ref={sectionRef} aria-label="Experience and Achievements" className="relative py-32">
       <BlueprintGrid />
       <div className="absolute top-40 left-10 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Briefcase} delay={0} /></div>
       <div className="absolute bottom-20 right-20 text-yellow-400/20 dark:text-yellow-500/20"><FloatingIcon icon={Trophy} delay={0.5} /></div>
@@ -905,7 +928,7 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-32">
+    <section id="contact" ref={sectionRef} aria-label="Contact Debmalya Bhattacharyya" className="relative py-32">
       <BlueprintGrid />
       <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-100 dark:bg-yellow-900/10 rounded-full blur-3xl opacity-50" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-200 dark:bg-yellow-900/10 rounded-full blur-3xl opacity-30" />
@@ -1015,6 +1038,8 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <SEOStructuredData />
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-yellow-400 focus:text-gray-900 focus:rounded-full">Skip to main content</a>
       <Aurora
         colorStops={["#FFD400", "#FF8C00", "#FF8C00"]}
         blend={0.97}
@@ -1035,7 +1060,7 @@ function App() {
       />
       <EngineeringBackground theme={theme} />
       <Navigation theme={theme} toggleTheme={toggleTheme} />
-      <main className="relative z-10 transition-colors duration-300">
+      <main className="relative z-10 transition-colors duration-300" role="main" id="main-content">
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
