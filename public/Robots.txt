@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin & private paths
+Disallow: /admin
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://debmalya.space/sitemap.xml
